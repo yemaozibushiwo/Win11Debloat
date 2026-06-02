@@ -1,4 +1,4 @@
-function Show-RestoreBackupWindow {
+﻿function Show-RestoreBackupWindow {
     param(
         [Parameter(Mandatory = $false)]
         [System.Windows.Window]$Owner = $null
@@ -24,7 +24,7 @@ function Show-RestoreBackupWindow {
 
             Write-Host "User confirmed registry restore for $($backup.Target)."
             Restore-RegistryBackupState -Backup $backup
-            $successMessage = 'Registry backup restored successfully. Please restart your computer for all changes to take effect.'
+            $successMessage = '注册表备份已成功恢复。请重启计算机以使所有更改生效。'
         }
         elseif ($dialogResult.Result -eq 'RestoreStartMenu') {
             $scope = $dialogResult.StartMenuScope
@@ -59,30 +59,30 @@ function Show-RestoreBackupWindow {
 
             if ($failedEntries.Count -gt 0) {
                 $failureSummary = ($failedEntries | ForEach-Object { $_.Message }) -join [Environment]::NewLine
-                $warningMessage = "The Start Menu backup was successfully restored for $successCount user(s).`nSome users could not be restored:`n$failureSummary"
+                $warningMessage = "已为 $successCount 个用户成功恢复开始菜单备份。`n部分用户无法恢复:`n$failureSummary"
             }
             else {
                 if ($scope -eq 'AllUsers') {
-                    $successMessage = "The Start Menu backup was successfully restored for all users. The changes will apply the next time users sign in."
+                    $successMessage = '已为所有用户成功恢复开始菜单备份。将在用户下次登录时生效。'
                 }
                 else {
-                    $successMessage = "The Start Menu backup was successfully restored for the current user. The changes will apply the next time you sign in."
+                    $successMessage = '已为当前用户成功恢复开始菜单备份。将在你下次登录时生效。'
                 }
             }
         }
 
         if ($warningMessage) {
             Write-Host "$warningMessage"
-            Show-MessageBox -Title 'Backup Restored' -Message $warningMessage -Icon Warning
+            Show-MessageBox -Title '备份已恢复' -Message $warningMessage -Icon Warning
         }
         elseif ($successMessage) {
             Write-Host "$successMessage"
-            Show-MessageBox -Title 'Backup Restored' -Message $successMessage -Icon Success
+            Show-MessageBox -Title '备份已恢复' -Message $successMessage -Icon Success
         }
     }
     catch {
         $errorMessage = if ($_.Exception.Message) { $_.Exception.Message } else { 'An unexpected error occurred.' }
         Write-Error "Restore operation failed: $errorMessage"
-        Show-MessageBox -Title 'Error' -Message "Restore failed: $errorMessage" -Icon Error
+        Show-MessageBox -Title '错误' -Message "恢复失败:$errorMessage" -Icon Error
     }
 }

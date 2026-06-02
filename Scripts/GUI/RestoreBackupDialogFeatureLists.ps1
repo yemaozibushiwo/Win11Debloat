@@ -1,4 +1,4 @@
-function New-RestoreDialogState {
+﻿function New-RestoreDialogState {
     param(
         [string]$Result = 'Cancel',
         [string]$SelectedFile = $null,
@@ -50,7 +50,7 @@ function Get-RestoreDialogFeatureDisplayLabel {
     )
 
     if ([string]::IsNullOrWhiteSpace($FeatureId)) {
-        return 'Unknown feature'
+        return '未知功能'
     }
 
     $featureDefinition = Get-RestoreDialogFeatureDefinition -FeatureId $FeatureId -Features $Features
