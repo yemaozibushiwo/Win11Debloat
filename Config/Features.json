@@ -288,7 +288,7 @@
       "Label": "移除通过 'Apps' 参数指定的应用",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -298,7 +298,7 @@
       "Label": "要移除的应用选择，以逗号分隔的列表形式指定。使用 'Default'（或省略）以使用默认应用列表",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -308,7 +308,7 @@
       "Label": "移除自定义选择的应用",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -318,7 +318,7 @@
       "Label": "移除邮件、日历和联系人应用",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -328,7 +328,7 @@
       "Label": "移除新版 Windows Outlook 应用",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -338,7 +338,7 @@
       "Label": "移除 Xbox 应用和 Xbox 游戏栏",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null
@@ -348,7 +348,7 @@
       "Label": "移除 HP OEM 应用",
       "Category": null,
       "RegistryKey": null,
-      "ApplyText": null,
+      "ApplyText": "Removing selected apps...",
       "RegistryUndoKey": null,
       "MinVersion": null,
       "MaxVersion": null

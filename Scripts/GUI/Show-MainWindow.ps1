@@ -1,4 +1,4 @@
-function Show-MainWindow {
+﻿function Show-MainWindow {
     Add-Type -AssemblyName PresentationFramework,PresentationCore,WindowsBase,System.Windows.Forms | Out-Null
 
     # Helper to constrain the maximized window to the monitor working area (respects taskbar).
@@ -240,7 +240,7 @@ function Show-MainWindow {
             Start-Process "explorer.exe" -ArgumentList $logsFolder
         }
         else {
-            Show-MessageBox -Message "No logs folder found at: $logsFolder" -Title "Logs" -Button 'OK' -Icon 'Information'
+            Show-MessageBox -Message "未在以下位置找到日志文件夹:$logsFolder" -Title "日志" -Button 'OK' -Icon 'Information'
         }
     })
 
@@ -254,7 +254,7 @@ function Show-MainWindow {
         }
         catch {
             Write-Warning "Export configuration failed: $($_.Exception.Message)"
-            Show-MessageBox -Owner $window -Message "Unable to open export configuration dialog: $($_.Exception.Message)" -Title 'Export Configuration Failed' -Button 'OK' -Icon 'Error' | Out-Null
+            Show-MessageBox -Owner $window -Message "无法打开导出配置对话框:$($_.Exception.Message)" -Title '导出配置失败' -Button 'OK' -Icon 'Error' | Out-Null
         }
     })
 
@@ -265,13 +265,13 @@ function Show-MainWindow {
                 UpdateNavigationButtons
 
                 $window.Dispatcher.BeginInvoke([System.Windows.Threading.DispatcherPriority]::Loaded, [action]{
-                    Show-Bubble -TargetControl $reviewChangesBtn -Message 'View the selected changes here'
+                    Show-Bubble -TargetControl $reviewChangesBtn -Message '在这里查看已选择的更改'
                 }) | Out-Null
             }
         }
         catch {
             Write-Warning "Import configuration failed: $($_.Exception.Message)"
-            Show-MessageBox -Owner $window -Message "Unable to open import configuration dialog: $($_.Exception.Message)" -Title 'Import Configuration Failed' -Button 'OK' -Icon 'Error' | Out-Null
+            Show-MessageBox -Owner $window -Message "无法打开导入配置对话框:$($_.Exception.Message)" -Title '导入配置失败' -Button 'OK' -Icon 'Error' | Out-Null
         }
     })
 
@@ -282,7 +282,7 @@ function Show-MainWindow {
             }
             catch {
                 Write-Warning "Restore backup action failed: $($_.Exception.Message)"
-                Show-MessageBox -Owner $window -Message "Unable to open restore backup dialog: $($_.Exception.Message)" -Title 'Restore Backup Failed' -Button 'OK' -Icon 'Error' | Out-Null
+                Show-MessageBox -Owner $window -Message "无法打开恢复备份对话框:$($_.Exception.Message)" -Title '恢复备份失败' -Button 'OK' -Icon 'Error' | Out-Null
             }
         })
     }
@@ -416,7 +416,7 @@ function Show-MainWindow {
         $checkbox.Content = $preset.Name
         $checkbox.IsThreeState = $true
         $checkbox.Style = $window.Resources['PresetCheckBoxStyle']
-        $checkbox.ToolTip = "Select $($preset.Name)"
+        $checkbox.ToolTip = "选择 $($preset.Name)"
         $checkbox.SetValue([System.Windows.Automation.AutomationProperties]::NameProperty, $preset.Name)
         AttachTriStateClickBehavior -checkBox $checkbox
         Add-Member -InputObject $checkbox -MemberType NoteProperty -Name 'PresetAppIds' -Value $preset.AppIds
@@ -544,7 +544,7 @@ function Show-MainWindow {
                 $selectedCount++
             }
         }
-        $appSelectionStatus.Text = "$selectedCount app(s) selected for removal"
+        $appSelectionStatus.Text = "已选择 $selectedCount 个应用待卸载"
 
         if ($appRemovalScopeCombo -and $appRemovalScopeSection -and $appRemovalScopeDescription) {
             if ($selectedCount -gt 0) {
@@ -555,7 +555,7 @@ function Show-MainWindow {
             }
             else {
                 $appRemovalScopeCombo.IsEnabled = $false
-                $appRemovalScopeDescription.Text = "No apps selected for removal."
+                $appRemovalScopeDescription.Text = "未选择任何应用。"
             }
         }
     }
@@ -619,7 +619,7 @@ function Show-MainWindow {
         $featuresJson = LoadJsonFile -filePath $script:FeaturesFilePath -expectedVersion "1.0"
 
         if (-not $featuresJson) {
-            Show-MessageBox -Message "Unable to load Features.json file!" -Title "Error" -Button 'OK' -Icon 'Error' | Out-Null
+            Show-MessageBox -Message "无法加载 Features.json 文件!" -Title "错误" -Button 'OK' -Icon 'Error' | Out-Null
             Exit
         }
 
@@ -758,7 +758,7 @@ function Show-MainWindow {
 
             $helpBtn = New-Object System.Windows.Controls.Button
             $helpBtn.Content = $helpIcon
-            $helpBtn.ToolTip = "Open wiki for more info on '$categoryName' tweaks"
+            $helpBtn.ToolTip = "打开 Wiki 查看关于 ${categoryName} 调整项的更多信息"
             $helpBtn.Tag = (GetWikiUrlForCategory -category $categoryName)
             $helpBtn.Style = $window.Resources['CategoryHelpLinkButtonStyle']
             $helpBtn.Add_Click({
@@ -859,7 +859,7 @@ function Show-MainWindow {
             foreach ($item in $sortedItems) {
                 if ($item.Type -eq 'group') {
                     $group = $item.Data
-                    $items = @('No Change') + ($group.Values | ForEach-Object { $_.Label })
+                    $items = @('不更改') + ($group.Values | ForEach-Object { $_.Label })
                     $comboName = 'Group_{0}Combo' -f $group.GroupId
                     $combo = CreateLabeledCombo -parent $panel -labelText $group.Label -comboName $comboName -items $items
                     # attach tooltip from UiGroups if present
@@ -877,9 +877,9 @@ function Show-MainWindow {
                 }
                 elseif ($item.Type -eq 'feature') {
                     $feature = $item.Data
-                    $opt = 'Apply'
-                    if ($feature.FeatureId -match '^Disable') { $opt = 'Disable' } elseif ($feature.FeatureId -match '^Enable') { $opt = 'Enable' }
-                    $items = @('No Change', $opt)
+                    $opt = '应用'
+                    if ($feature.FeatureId -match '^Disable') { $opt = '禁用' } elseif ($feature.FeatureId -match '^Enable') { $opt = '启用' }
+                    $items = @('不更改', $opt)
                     $comboName = ("Feature_{0}_Combo" -f $feature.FeatureId) -replace '[^a-zA-Z0-9_]',''
                     $combo = CreateLabeledCombo -parent $panel -labelText $feature.Label -comboName $comboName -items $items
                     # attach tooltip from Features.json if present
@@ -970,9 +970,9 @@ function Show-MainWindow {
             $dot.Style = $window.Resources['AppRecommendationDotStyle']
             $dot.Fill  = switch ($app.Recommendation) { 'safe' { $brushSafe } 'unsafe' { $brushUnsafe } default { $brushDefault } }
             $dot.ToolTip = switch ($app.Recommendation) {
-                'safe'   { '[Recommended] Safe to remove for most users' }
-                'unsafe' { '[Not Recommended] Only remove if you know what you are doing' }
-                default  { "[Optional] Remove if you don't need this app" }
+                'safe'   { '[推荐] 对大多数用户来说可以安全卸载' }
+                'unsafe' { '[不推荐] 仅在清楚后果时再卸载' }
+                default  { '[可选] 如果你不需要此应用可以卸载' }
             }
             [System.Windows.Controls.Grid]::SetColumn($dot, 0)
 
@@ -1065,10 +1065,10 @@ function Show-MainWindow {
                 if ($onlyInstalledAppsBox.IsChecked -and ($script:WingetInstalled -eq $true)) {
                     $listOfApps = GetInstalledAppsViaWinget -TimeOut 10 -NonBlocking
 
-                    if ($null -eq $listOfApps) {
-                        Show-MessageBox -Message 'Unable to load list of installed apps via WinGet.' -Title 'Error' -Button 'OK' -Icon 'Error' | Out-Null
-                        $onlyInstalledAppsBox.IsChecked = $false
-                    }
+                if ($null -eq $listOfApps) {
+                    Show-MessageBox -Message '无法通过 WinGet 加载已安装应用列表。' -Title '错误' -Button 'OK' -Icon 'Error' | Out-Null
+                    $onlyInstalledAppsBox.IsChecked = $false
+                }
                 }
 
                 LoadAppsWithList $listOfApps
@@ -1539,8 +1539,8 @@ function Show-MainWindow {
     # Update user selection description and show/hide other user panel
     $userSelectionCombo.Add_SelectionChanged({
         switch ($userSelectionCombo.SelectedIndex) {
-            0 { 
-                $userSelectionDescription.Text = "Changes will be applied to the currently logged-in user profile."
+            0 {
+                $userSelectionDescription.Text = "更改将应用到当前已登录的用户配置文件。"
                 $otherUserPanel.Visibility = 'Collapsed'
                 $usernameValidationMessage.Text = ""
                 # Show "Current user only" option, hide "Target user only" option
@@ -1548,8 +1548,8 @@ function Show-MainWindow {
                 $appRemovalScopeTargetUser.Visibility = 'Collapsed'
                 $appRemovalScopeCombo.SelectedIndex = 0
             }
-            1 { 
-                $userSelectionDescription.Text = "Changes will be applied to a different user profile on this system."
+            1 {
+                $userSelectionDescription.Text = "更改将应用到本系统的其他用户配置文件。"
                 $otherUserPanel.Visibility = 'Visible'
                 $usernameValidationMessage.Text = ""
                 # Hide "Current user only" option, show "Target user only" option
@@ -1557,8 +1557,8 @@ function Show-MainWindow {
                 $appRemovalScopeTargetUser.Visibility = 'Visible'
                 $appRemovalScopeCombo.SelectedIndex = 0
             }
-            2 { 
-                $userSelectionDescription.Text = "Changes will be applied to the default user template, affecting all new users created after this point. Useful for Sysprep deployment."
+            2 {
+                $userSelectionDescription.Text = "更改将应用到默认用户模板,影响此后创建的所有新用户。适用于 Sysprep 部署场景。"
                 $otherUserPanel.Visibility = 'Collapsed'
                 $usernameValidationMessage.Text = ""
                 # Hide other user options since they don't apply to default user template
@@ -1578,14 +1578,14 @@ function Show-MainWindow {
         $selectedItem = $appRemovalScopeCombo.SelectedItem
         if ($selectedItem) {
             switch ($selectedItem.Content) {
-                "All users" { 
-                    $appRemovalScopeDescription.Text = "Apps will be removed for all users and from the Windows image to prevent reinstallation for new users."
+                "所有用户" {
+                    $appRemovalScopeDescription.Text = "将对所有用户卸载这些应用,并从 Windows 映像中移除,以避免新建用户时自动重新安装。"
                 }
-                "Current user only" { 
-                    $appRemovalScopeDescription.Text = "Apps will only be removed for the current user. Other users and new users will not be affected."
+                "仅当前用户" {
+                    $appRemovalScopeDescription.Text = "仅会为当前用户卸载这些应用,其他用户和新用户不受影响。"
                 }
-                "Target user only" { 
-                    $appRemovalScopeDescription.Text = "Apps will only be removed for the specified target user. Other users and new users will not be affected."
+                "仅指定用户" {
+                    $appRemovalScopeDescription.Text = "仅会为指定的目标用户卸载这些应用,其他用户和新用户不受影响。"
                 }
             }
         }
@@ -1638,7 +1638,7 @@ function Show-MainWindow {
             }
         }
         if ($selectedAppsCount -gt 0) {
-            $changesList += "Remove $selectedAppsCount application(s)"
+            $changesList += "卸载 $selectedAppsCount 个应用"
         }
         
         UpdateAppSelectionStatus
@@ -1683,12 +1683,12 @@ function Show-MainWindow {
         $changesList = GenerateOverview
 
         if ($changesList.Count -eq 0) {
-            Show-MessageBox -Message 'No changes have been selected.' -Title 'Selected Changes' -Button 'OK' -Icon 'Information'
+            Show-MessageBox -Message '尚未选择任何更改。' -Title '已选择的更改' -Button 'OK' -Icon 'Information'
             return
         }
 
         $message = ($changesList | ForEach-Object { "$([char]0x2022) $_" }) -join "`n"
-        Show-MessageBox -Message $message -Title 'Selected Changes' -Button 'OK' -Icon 'None' -Width 600
+        Show-MessageBox -Message $message -Title '已选择的更改' -Button 'OK' -Icon 'None' -Width 600
     }
 
     $previousBtn.Add_Click({
@@ -1755,9 +1755,9 @@ function Show-MainWindow {
                 $usernameValidationMessage.Text
             }
             else {
-                "Please enter a valid username."
+                "请输入有效的用户名。"
             }
-            Show-MessageBox -Message $validationMessage -Title "Invalid Username" -Button 'OK' -Icon 'Warning' | Out-Null
+            Show-MessageBox -Message $validationMessage -Title "无效的用户名" -Button 'OK' -Icon 'Warning' | Out-Null
             return
         }
 
@@ -1773,14 +1773,20 @@ function Show-MainWindow {
         $selectedApps = @($selectedApps | Where-Object { $_ } | Select-Object -Unique)
         
         if ($selectedApps.Count -gt 0) {
+<<<<<<< Updated upstream
+            if (-not (ConfirmUnsafeAppRemoval -SelectedApps $selectedApps -Owner $window)) {
+                return
+=======
             # Check if Microsoft Store is selected
             if ($selectedApps -contains "Microsoft.WindowsStore") {
-                $result = Show-MessageBox -Message 'Are you sure you wish to uninstall the Microsoft Store? This app cannot easily be reinstalled.' -Title 'Are you sure?' -Button 'YesNo' -Icon 'Warning'
+                $result = Show-MessageBox -Message '确定要卸载 Microsoft Store 吗?此应用后续将难以重新安装。' -Title '确定要继续吗?' -Button 'YesNo' -Icon 'Warning'
 
                 if ($result -eq 'No') {
                     return
                 }
+>>>>>>> Stashed changes
             }
+            
             
             AddParameter 'RemoveApps'
             AddParameter 'Apps' ($selectedApps -join ',')
@@ -1789,13 +1795,13 @@ function Show-MainWindow {
             $selectedScopeItem = $appRemovalScopeCombo.SelectedItem
             if ($selectedScopeItem) {
                 switch ($selectedScopeItem.Content) {
-                    "All users" { 
+                    "所有用户" {
                         AddParameter 'AppRemovalTarget' 'AllUsers'
                     }
-                    "Current user only" { 
+                    "仅当前用户" {
                         AddParameter 'AppRemovalTarget' 'CurrentUser'
                     }
-                    "Target user only" { 
+                    "仅指定用户" {
                         # Use the target username from Other User panel
                         AddParameter 'AppRemovalTarget' ($otherUsernameTextBox.Text.Trim())
                     }
@@ -1853,7 +1859,7 @@ function Show-MainWindow {
         }
 
         if ($totalChanges -eq 0) {
-            Show-MessageBox -Message 'No changes have been selected, please select at least one option to proceed.' -Title 'No Changes Selected' -Button 'OK' -Icon 'Information'
+            Show-MessageBox -Message '尚未选择任何更改,请至少选择一项以继续。' -Title '未选择任何更改' -Button 'OK' -Icon 'Information'
             return
         }
 
@@ -1905,7 +1911,7 @@ function Show-MainWindow {
         if ($userSelectionCombo -and $userSelectionCombo.Items.Count -gt 0) {
             $currentUserItem = $userSelectionCombo.Items[0]
             if ($currentUserItem -is [System.Windows.Controls.ComboBoxItem]) {
-                $currentUserItem.Content = "Current User ($(GetUserName))"
+                $currentUserItem.Content = "当前用户 ($(GetUserName))"
             }
         }
 

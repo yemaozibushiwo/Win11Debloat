@@ -1,4 +1,4 @@
-function Hide-Bubble {
+﻿function Hide-Bubble {
     param (
         [Parameter(Mandatory=$false)]
         [switch]$Immediate
@@ -43,7 +43,7 @@ function Show-Bubble {
         [System.Windows.Controls.Control]$TargetControl,
 
         [Parameter(Mandatory=$false)]
-        [string]$Message = 'View the selected changes here',
+        [string]$Message = '在这里查看已选择的更改',
 
         [Parameter(Mandatory=$false)]
         [int]$DurationSeconds = 5

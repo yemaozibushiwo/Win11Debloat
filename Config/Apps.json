@@ -647,7 +647,10 @@
     },
     {
       "FriendlyName": "Microsoft Edge",
-      "AppId": ["Microsoft.Edge", "XPFFTQ037JWMHS"],
+      "AppId": [
+        "Microsoft.Edge",
+        "XPFFTQ037JWMHS"
+      ],
       "Description": "Windows 默认浏览器，警告：移除此应用也会移除 Windows 沙盒中唯一的浏览器，并可能影响其他应用",
       "SelectedByDefault": false,
       "Recommendation": "unsafe"
@@ -783,7 +786,7 @@
       "AppId": "Microsoft.WindowsTerminal",
       "Description": "Windows 11 默认终端应用（命令提示符、PowerShell、WSL）",
       "SelectedByDefault": false,
-      "Recommendation": "optional"
+      "Recommendation": "unsafe"
     },
     {
       "FriendlyName": "Xbox TCUI Framework",

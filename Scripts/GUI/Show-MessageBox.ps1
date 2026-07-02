@@ -1,4 +1,4 @@
-# Shows a Windows 11 styled custom message box
+﻿# Shows a Windows 11 styled custom message box
 function Show-MessageBox {
     param (
         [Parameter(Mandatory=$true)]
@@ -118,20 +118,20 @@ function Show-MessageBox {
     # Configure buttons - store result in window's Tag property
     switch ($Button) {
         'OK' {
-            $button1.Content = 'OK'
+            $button1.Content = '确定'
             $button1.Add_Click({ $msgWindow.Tag = 'OK'; $msgWindow.Close() })
             $button2.Visibility = 'Collapsed'
         }
         'OKCancel' {
-            $button1.Content = 'OK'
-            $button2.Content = 'Cancel'
+            $button1.Content = '确定'
+            $button2.Content = '取消'
             $button1.Add_Click({ $msgWindow.Tag = 'OK'; $msgWindow.Close() })
             $button2.Add_Click({ $msgWindow.Tag = 'Cancel'; $msgWindow.Close() })
             $button2.Visibility = 'Visible'
         }
         'YesNo' {
-            $button1.Content = 'Yes'
-            $button2.Content = 'No'
+            $button1.Content = '是'
+            $button2.Content = '否'
             $button1.Add_Click({ $msgWindow.Tag = 'Yes'; $msgWindow.Close() })
             $button2.Add_Click({ $msgWindow.Tag = 'No'; $msgWindow.Close() })
             $button2.Visibility = 'Visible'
