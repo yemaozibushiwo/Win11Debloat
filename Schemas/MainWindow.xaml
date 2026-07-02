@@ -402,12 +402,10 @@
                                             </Style>
                                         </ContextMenu.Resources>
                                         <MenuItem x:Name="ImportConfigBtn" Header="导入配置" AutomationProperties.Name="导入配置">
-                                        <MenuItem x:Name="ImportConfigBtn" Header="导入配置" AutomationProperties.Name="导入配置">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xe838;" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             </MenuItem.Icon>
                                         </MenuItem>
-                                        <MenuItem x:Name="ExportConfigBtn" Header="导出配置" AutomationProperties.Name="导出配置">
                                         <MenuItem x:Name="ExportConfigBtn" Header="导出配置" AutomationProperties.Name="导出配置">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xe74e;" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="{DynamicResource FgColor}"/>
@@ -420,7 +418,6 @@
                                         </MenuItem>
                                         <Separator />
                                         <MenuItem x:Name="MenuDocumentation" Header="文档" AutomationProperties.Name="文档">
-                                        <MenuItem x:Name="MenuDocumentation" Header="文档" AutomationProperties.Name="文档">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xe736;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             </MenuItem.Icon>
@@ -431,12 +428,10 @@
                                             </MenuItem.Icon>
                                         </MenuItem>
                                         <MenuItem x:Name="MenuLogs" Header="日志" AutomationProperties.Name="日志">
-                                        <MenuItem x:Name="MenuLogs" Header="日志" AutomationProperties.Name="日志">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xf000;" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             </MenuItem.Icon>
                                         </MenuItem>
-                                        <MenuItem x:Name="MenuAbout" Header="关于" AutomationProperties.Name="关于">
                                         <MenuItem x:Name="MenuAbout" Header="关于" AutomationProperties.Name="关于">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xE946;" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="{DynamicResource FgColor}"/>
@@ -445,7 +440,6 @@
                                     </ContextMenu>
                                 </Button.ContextMenu>
                             </Button>
-                            <Button x:Name="CloseBtn" shell:WindowChrome.IsHitTestVisibleInChrome="True" Content="&#xE8BB;" Style="{StaticResource CloseButton}" ToolTip="关闭" AutomationProperties.Name="关闭"/>
                             <Button x:Name="CloseBtn" shell:WindowChrome.IsHitTestVisibleInChrome="True" Content="&#xE8BB;" Style="{StaticResource CloseButton}" ToolTip="关闭" AutomationProperties.Name="关闭"/>
                         </StackPanel>
                     </Grid>
@@ -514,7 +508,6 @@
                             
                             <!-- Title -->
                             <TextBlock Text="欢迎使用 Win11Debloat" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource FgColor}" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                            <TextBlock Text="欢迎使用 Win11Debloat" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource FgColor}" HorizontalAlignment="Center" Margin="0,0,0,10"/>
                             <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource FgColor}" FontSize="16" LineHeight="22" HorizontalAlignment="Center" Margin="0,0,0,30">
                                 <Run Text="清爽的 Windows 体验只需几步操作即可实现！"/>
                             </TextBlock>
@@ -558,7 +551,6 @@
 
                                     <StackPanel Orientation="Horizontal" Grid.Column="0">
                                         <ToggleButton x:Name="PresetsBtn" ToolTip="选择或清除应用预设" Height="32" Padding="10,0" Margin="0,0,10,0" AutomationProperties.Name="应用预设">
-                                        <ToggleButton x:Name="PresetsBtn" ToolTip="选择或清除应用预设" Height="32" Padding="10,0" Margin="0,0,10,0" AutomationProperties.Name="应用预设">
                                             <ToggleButton.Style>
                                                 <Style TargetType="ToggleButton">
                                                     <Setter Property="Background" Value="{DynamicResource SecondaryButtonBg}"/>
@@ -592,7 +584,6 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="&#xE735;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                                 <TextBlock Text="快速选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                                <TextBlock Text="快速选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                                 <TextBlock x:Name="PresetsArrow" Text="&#xE70D;" FontFamily="Segoe Fluent Icons" FontSize="10" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.RenderTransform>
                                                         <RotateTransform x:Name="PresetsArrowRotation" Angle="0"/>
@@ -603,7 +594,6 @@
                                         <Button x:Name="ClearAppSelectionBtn" ToolTip="清除所有选中的应用" Style="{DynamicResource SecondaryButtonStyle}" Height="32"  Padding="10,0" Margin="0,0,10,0" AutomationProperties.Name="Clear Selection">
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                                 <TextBlock Text="&#xE711;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                                <TextBlock Text="清除选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,0,1"/>
                                                 <TextBlock Text="清除选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,0,1"/>
                                             </StackPanel>
                                         </Button>
@@ -642,8 +632,6 @@
                                             <TextBlock Grid.Column="0" Text="&#xE721;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="4,0,8,0" Foreground="{DynamicResource FgColor}"/>
                                             <TextBlock x:Name="AppSearchPlaceholder" Grid.Column="1" Text="搜索应用" Foreground="{DynamicResource FgColor}" Opacity="0.5" FontSize="13" Margin="3,0,0,1" VerticalAlignment="Center" IsHitTestVisible="False"/>
                                             <TextBox x:Name="AppSearchBox" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource FgColor}" BorderThickness="0" FontSize="13" Margin="1,0,0,1" VerticalAlignment="Center" Text="" AutomationProperties.Name="搜索应用"/>
-                                            <TextBlock x:Name="AppSearchPlaceholder" Grid.Column="1" Text="搜索应用" Foreground="{DynamicResource FgColor}" Opacity="0.5" FontSize="13" Margin="3,0,0,1" VerticalAlignment="Center" IsHitTestVisible="False"/>
-                                            <TextBox x:Name="AppSearchBox" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource FgColor}" BorderThickness="0" FontSize="13" Margin="1,0,0,1" VerticalAlignment="Center" Text="" AutomationProperties.Name="搜索应用"/>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -672,7 +660,6 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel x:Name="HeaderNameBtn" Grid.Column="1" Orientation="Horizontal" Cursor="Hand" VerticalAlignment="Center" Style="{StaticResource SortHeaderBtnStyle}">
                                             <TextBlock Text="名称" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource FgColor}"/>
-                                            <TextBlock Text="名称" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             <TextBlock x:Name="SortArrowName" Text="&#xE70E;" FontFamily="Segoe Fluent Icons" FontSize="11" Foreground="{DynamicResource FgColor}" VerticalAlignment="Center" Margin="5,1,0,0" Opacity="0.3" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform><RotateTransform Angle="0"/></TextBlock.RenderTransform>
                                             </TextBlock>
@@ -684,7 +671,6 @@
                                             </TextBlock>
                                         </StackPanel>
                                         <StackPanel x:Name="HeaderAppIdBtn" Grid.Column="3" Orientation="Horizontal" Cursor="Hand" VerticalAlignment="Center" Style="{StaticResource SortHeaderBtnStyle}">
-                                            <TextBlock Text="应用 ID" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             <TextBlock Text="应用 ID" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource FgColor}"/>
                                             <TextBlock x:Name="SortArrowAppId" Text="&#xE70E;" FontFamily="Segoe Fluent Icons" FontSize="11" Foreground="{DynamicResource FgColor}" VerticalAlignment="Center" Margin="5,1,0,0" Opacity="0.3" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform><RotateTransform Angle="0"/></TextBlock.RenderTransform>
@@ -717,7 +703,6 @@
                                                         </EventTrigger>
                                                     </TextBlock.Triggers>
                                                 </TextBlock>
-                                                <TextBlock Text="正在加载应用..." FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource FgColor}" HorizontalAlignment="Center"/>
                                                 <TextBlock Text="正在加载应用..." FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource FgColor}" HorizontalAlignment="Center"/>
                                             </StackPanel>
                                         </Border>
@@ -784,7 +769,6 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="&#xE735;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="0,1,6,0"/>
                                                 <TextBlock Text="快速选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                                <TextBlock Text="快速选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                                 <TextBlock x:Name="TweaksPresetsArrow" Text="&#xE70D;" FontFamily="Segoe Fluent Icons" FontSize="10" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.RenderTransform>
                                                         <RotateTransform Angle="0"/>
@@ -795,7 +779,6 @@
                                         <Button x:Name="ClearAllTweaksBtn" ToolTip="清除所有选中的调整" Style="{DynamicResource SecondaryButtonStyle}" Padding="10,0" Height="32" Margin="0,0,10,0" AutomationProperties.Name="Clear Selection">
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                                 <TextBlock Text="&#xE711;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                                <TextBlock Text="清除选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,0,1"/>
                                                 <TextBlock Text="清除选择" FontSize="13" VerticalAlignment="Center" Margin="0,0,0,1"/>
                                             </StackPanel>
                                         </Button>
@@ -831,7 +814,6 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE721;" FontFamily="Segoe Fluent Icons" FontSize="14" VerticalAlignment="Center" Margin="4,0,8,0" Foreground="{DynamicResource FgColor}"/>
-                                            <TextBlock x:Name="TweakSearchPlaceholder" Grid.Column="1" Text="搜索设置" Foreground="{DynamicResource FgColor}" Opacity="0.5" FontSize="13" Margin="3,0,0,1" VerticalAlignment="Center" IsHitTestVisible="False"/>
                                             <TextBlock x:Name="TweakSearchPlaceholder" Grid.Column="1" Text="搜索设置" Foreground="{DynamicResource FgColor}" Opacity="0.5" FontSize="13" Margin="3,0,0,1" VerticalAlignment="Center" IsHitTestVisible="False"/>
                                             <TextBox x:Name="TweakSearchBox" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource FgColor}" BorderThickness="0" FontSize="13" Margin="1,0,0,1" VerticalAlignment="Center" Text=""/>
                                         </Grid>

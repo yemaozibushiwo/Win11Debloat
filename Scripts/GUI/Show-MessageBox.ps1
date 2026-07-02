@@ -46,7 +46,7 @@ function Show-MessageBox {
     }
     
     # Load XAML from file
-    $xaml = Get-Content -Path $script:MessageBoxSchema -Raw
+    $xaml = Get-Content -Path $script:MessageBoxSchema -Raw -Encoding UTF8
     $reader = [System.Xml.XmlReader]::Create([System.IO.StringReader]::new($xaml))
     try {
         $msgWindow = [System.Windows.Markup.XamlReader]::Load($reader)

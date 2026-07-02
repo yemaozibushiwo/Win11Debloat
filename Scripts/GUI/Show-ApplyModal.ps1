@@ -46,7 +46,7 @@
     }
     
     # Load XAML from file
-    $xaml = Get-Content -Path $script:ApplyChangesWindowSchema -Raw
+    $xaml = Get-Content -Path $script:ApplyChangesWindowSchema -Raw -Encoding UTF8
     $reader = [System.Xml.XmlReader]::Create([System.IO.StringReader]::new($xaml))
     try {
         $applyWindow = [System.Windows.Markup.XamlReader]::Load($reader)

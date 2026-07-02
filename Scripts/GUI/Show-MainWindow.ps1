@@ -73,7 +73,7 @@
     $usesDarkMode = GetSystemUsesDarkMode
 
     # Load XAML from file
-    $xaml = Get-Content -Path $script:MainWindowSchema -Raw
+    $xaml = Get-Content -Path $script:MainWindowSchema -Raw -Encoding UTF8
     $reader = [System.Xml.XmlReader]::Create([System.IO.StringReader]::new($xaml))
     try {
         $window = [System.Windows.Markup.XamlReader]::Load($reader)
@@ -1773,18 +1773,8 @@
         $selectedApps = @($selectedApps | Where-Object { $_ } | Select-Object -Unique)
         
         if ($selectedApps.Count -gt 0) {
-<<<<<<< Updated upstream
             if (-not (ConfirmUnsafeAppRemoval -SelectedApps $selectedApps -Owner $window)) {
                 return
-=======
-            # Check if Microsoft Store is selected
-            if ($selectedApps -contains "Microsoft.WindowsStore") {
-                $result = Show-MessageBox -Message '确定要卸载 Microsoft Store 吗?此应用后续将难以重新安装。' -Title '确定要继续吗?' -Button 'YesNo' -Icon 'Warning'
-
-                if ($result -eq 'No') {
-                    return
-                }
->>>>>>> Stashed changes
             }
             
             

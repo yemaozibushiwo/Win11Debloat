@@ -17,7 +17,7 @@ function Show-AppSelectionWindow {
     }
 
     # Load XAML from file
-    $xaml = Get-Content -Path $script:AppSelectionSchema -Raw
+    $xaml = Get-Content -Path $script:AppSelectionSchema -Raw -Encoding UTF8
     $reader = [System.Xml.XmlReader]::Create([System.IO.StringReader]::new($xaml))
     try {
         $window = [System.Windows.Markup.XamlReader]::Load($reader)
@@ -130,17 +130,8 @@ function Show-AppSelectionWindow {
             return
         }
 
-<<<<<<< Updated upstream
         if (-not (ConfirmUnsafeAppRemoval -SelectedApps $selectedApps -Owner $window)) {
             return
-=======
-        if ($selectedApps -contains "Microsoft.WindowsStore" -and -not $Silent) {
-            $result = Show-MessageBox -Message '确定要卸载 Microsoft Store 吗?此应用后续将难以重新安装。' -Title '确定要继续吗?' -Button 'YesNo' -Icon 'Warning' -Owner $window
-
-            if ($result -eq 'No') {
-                return
-            }
->>>>>>> Stashed changes
         }
 
         SaveCustomAppsListToFile -appsList $selectedApps

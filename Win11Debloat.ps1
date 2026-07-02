@@ -234,7 +234,7 @@ if (-not ((Test-Path $script:DefaultSettingsFilePath) -and (Test-Path $script:Ap
 # Load feature info from file
 $script:Features = @{}
 try {
-    $featuresData = Get-Content -Path $script:FeaturesFilePath -Raw | ConvertFrom-Json
+    $featuresData = Get-Content -Path $script:FeaturesFilePath -Raw -Encoding UTF8 | ConvertFrom-Json
     foreach ($feature in $featuresData.Features) {
         $script:Features[$feature.FeatureId] = $feature
     }

@@ -55,7 +55,7 @@ function Show-Bubble {
 
     Hide-Bubble -Immediate
 
-    $xaml = Get-Content -Path $script:BubbleHintSchema -Raw
+    $xaml = Get-Content -Path $script:BubbleHintSchema -Raw -Encoding UTF8
     $reader = [System.Xml.XmlReader]::Create([System.IO.StringReader]::new($xaml))
     try {
         $bubblePanel = [System.Windows.Markup.XamlReader]::Load($reader)

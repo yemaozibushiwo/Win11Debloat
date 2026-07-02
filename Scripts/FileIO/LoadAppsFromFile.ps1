@@ -14,7 +14,7 @@ function LoadAppsFromFile {
         # Check if file is JSON or text format
         if ($appsFilePath -like "*.json") {
             # JSON file format
-            $jsonContent = Get-Content -Path $appsFilePath -Raw | ConvertFrom-Json
+            $jsonContent = Get-Content -Path $appsFilePath -Raw -Encoding UTF8 | ConvertFrom-Json
             Foreach ($appData in $jsonContent.Apps) {
                 # Handle AppId as array (could be single or multiple IDs)
                 $appIdArray = if ($appData.AppId -is [array]) { $appData.AppId } else { @($appData.AppId) }
